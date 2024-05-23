@@ -4,16 +4,15 @@ import { ReactTyped } from 'react-typed';
 import Info from '../Info.json'
 
 
-function Skills() {
+function Skills(delay) {
   return (
     <>
       <section id='skills' className=' md:flex md:h-screen '>
   <div className='hidden md:block w-[30%] bg-gradient-to-r from-violet-600 to-indigo-600'>
-    <motion.h1 whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -100 }} transition={{ duration: 1 }} className=' font-bold gochi text-white text-[20px] md:px-16 lg:px-20 lg:text-[30px] md:mt-[250px]  lg:mt-[260px]'><ReactTyped strings={["skills"]} typeSpeed={500} cursorChar='>' loop /></motion.h1>
+    <motion.h1 whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -100 }} transition={{ duration: 1 , delay:1.8}} className=' font-bold gochi text-white text-[20px] md:px-16 lg:px-20 lg:text-[30px] md:mt-[250px]  lg:mt-[260px]'><ReactTyped strings={["skills"]} typeSpeed={500} cursorChar='>' loop /></motion.h1>
   </div>
   <div className='min-[320px]:px-16 min-[375px]:px-24 min-[425px]:px-28 md:p-7 lg:px-10 lg:py-6 xl:py-7 xl:px-28 md:w-[70%] w-full bg-white'>
-
-    <motion.div whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: 100 }} transition={{ duration: 1.2 }} className='grid grid-cols-1 md:grid-cols-2 md:gap-16 gap-5'>
+    <motion.div whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: 100 }} transition={{ duration: 1.2,delay:1.8}} className='grid grid-cols-1 md:grid-cols-2 md:gap-16 gap-5'>
       <h1 className='md:hidden mt-2 text-[20px] text-center text-[#404040] gochi'>skills</h1>
       {
         Info.map((data) => {
