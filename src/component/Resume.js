@@ -12,7 +12,7 @@ function Resume() {
         </div>
        
         <motion.div whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: 100 }} transition={{ duration: 1.2 }} className='md:w-1/2 lg:mt-16 '>
-          <a href="https://drive.google.com/file/d/1JR2kayR8qfSz01tKv3ywik7VYEcP7U7H/view?usp=drivesdk"><h1 className='mt-5 md:mt-0 md:text-[20px] font-bold text-[#f7f7f7] hover:text-[#b8b6b6]'>Resume link </h1></a>
+          <a href="/https://drive.google.com/file/d/1JR2kayR8qfSz01tKv3ywik7VYEcP7U7H/view?usp=drivesdk"><h1 className='mt-5 md:mt-0 md:text-[20px] font-bold text-[#f7f7f7] hover:text-[#b8b6b6]'>Resume link </h1></a>
           <div id='address'>
           <p className='mt-3 md:text-[20px] font-bold text-white'>Address : </p>
           <p className='md:text-[17px] font-bold text-[#c7bfbf]'>No.31 Mahalakshmi nagar Nellithope Mangadu chennai-69</p>
@@ -21,7 +21,7 @@ function Resume() {
           <div id='number'>
             <p className='mt-3 md:text-[20px] font-bold text-white'>contact </p>
             <div className='flex'>
-              <svg xmlns="http://www.w3.org/2000/svg" className='w-[24px] h-[24px] ' fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <svg xmlns="/http://www.w3.org/2000/svg" className='w-[24px] h-[24px] ' fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
               </svg>
 
