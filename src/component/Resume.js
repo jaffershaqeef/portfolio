@@ -12,7 +12,7 @@ function Resume() {
         </div>
        
         <motion.div whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: 100 }} transition={{ duration: 1.2 }} className='md:w-1/2 lg:mt-16 '>
-          <a href="/https://drive.google.com/file/d/1JR2kayR8qfSz01tKv3ywik7VYEcP7U7H/view?usp=drivesdk"><h1 className='mt-5 md:mt-0 md:text-[20px] font-bold text-[#f7f7f7] hover:text-[#b8b6b6]'>Resume link </h1></a>
+          <a href="https://drive.google.com/file/d/1JR2kayR8qfSz01tKv3ywik7VYEcP7U7H/view?usp=drivesdk"><h1 className='mt-5 md:mt-0 md:text-[20px] font-bold text-[#f7f7f7] hover:text-[#b8b6b6]'>Resume link </h1></a>
           <div id='address'>
           <p className='mt-3 md:text-[20px] font-bold text-white'>Address : </p>
           <p className='md:text-[17px] font-bold text-[#c7bfbf]'>No.31 Mahalakshmi nagar Nellithope Mangadu chennai-69</p>
