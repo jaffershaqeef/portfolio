@@ -1,0 +1,28 @@
+[
+  {
+    "id":1,
+    "icon":"images/html.png",
+    "name":"Html"
+    
+    
+  },
+  {
+    "id":2,
+    "icon":"images/tailwind.png",
+    "name":"Tailwind css"
+    
+  },
+  {
+    "id":3,
+    "icon":"images/javaSCript.png",
+    "name":"JavaScript"
+    
+  },
+  {
+    "id":4,
+    "icon":"images/REACT.png",
+    "name":"REACT"
+    
+  }
+  
+]
