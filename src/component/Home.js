@@ -150,7 +150,6 @@ function Home() {
                   </g>
                 </g>
               </svg></button>
-              <button className='bg-white text-black'>add</button>
             </div>
 
           </div>
