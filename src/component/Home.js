@@ -159,12 +159,12 @@ function Home() {
 
           </div>
         </section> 
-
+        <SpeechToText />
         <Skills/>
         <Projects/>
         <Contact/>
         <Resume/>
-        <SpeechToText />
+        
       </div>
 
   );

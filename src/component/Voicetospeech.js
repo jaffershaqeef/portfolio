@@ -43,7 +43,7 @@ const SpeechToText = () => {
   }
 
   return (
-    <div id='speech' style={{ padding: '20px' }}>
+    <div id='speech' style={{ padding: '20px' }} className='mb-10'>
       <h2>Speech to Text</h2>
       <p>{transcript || 'Start speaking to see the transcript'}</p>
       <button onClick={isListening ? stopListening : startListening}>
