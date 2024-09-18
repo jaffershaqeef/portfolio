@@ -6,7 +6,7 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Contact from './Contact';
 import Resume from './Resume';
-// Initialization for ES Users
+import SpeechToText from './Voicetospeech';
 
 
 
@@ -82,6 +82,7 @@ function Home() {
                   <li className=' list-none hover:underline hover:cursor-pointer decoration-wavy  px-2 py-2'><a href='#Projects'> Projects</a></li>
                   <li className=' list-none hover:underline hover:cursor-pointer decoration-wavy  px-2 py-2'><a href='#contact'>Contact</a></li>
                   <li className='list-none hover:underline hover:cursor-pointer decoration-wavy  px-2 py-2'><a href='#resume'>Resume</a></li>
+                  <li className='list-none hover:underline hover:cursor-pointer decoration-wavy  px-2 py-2'><a href='#speech'>speech</a></li>
                 </nav> 
                 
                 
@@ -163,6 +164,7 @@ function Home() {
         <Projects/>
         <Contact/>
         <Resume/>
+        <SpeechToText />
       </div>
 
   );
