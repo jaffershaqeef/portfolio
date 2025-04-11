@@ -1,117 +1,114 @@
-// SignaturePad.js
-import React, { useRef, forwardRef, useImperativeHandle, useState } from 'react';
+import React, {
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  useEffect,
+} from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 
-const SignaturePad = forwardRef(({
-  penColor = 'blue',
-  canvasClassName = 'signatureCanvas w-full h-full rounded',
-  width = '100%',
-  height = '200px',
-  backgroundColor = 'white',
-  velocityFilterWeight = 0.7,
-  minWidth = 0.5,
-  maxWidth = 2.5,
-  throttle = 16,
-  onSave = null, // Callback function when signature is saved
-  buttonClassName = 'signature-pad-button',
-  showButtons = true,
-  buttonContainerClassName = 'signature-pad-buttons',
-  ...props
-}, ref) => {
-  const sigCanvasRef = useRef(null);
+const SignaturePad = forwardRef(({ onSave }, ref) => {
+  const sigCanvas = useRef(null);
+  const [signatureURL, setSignatureURL] = useState(null);
   const [isEmpty, setIsEmpty] = useState(true);
 
-  // Expose methods to parent components
+  // Expose methods to parent (optional)
   useImperativeHandle(ref, () => ({
-    clear: () => {
-      handleClear();
-    },
-    isEmpty: () => {
-      return sigCanvasRef.current?.isEmpty();
-    },
-    getTrimmedDataURL: (type = 'image/png', encoderOptions) => {
-      return sigCanvasRef.current?.getTrimmedCanvas().toDataURL(type, encoderOptions);
-    },
-    getData: () => {
-      return sigCanvasRef.current?.toData();
-    },
-    fromData: (data) => {
-      sigCanvasRef.current?.fromData(data);
-    }
+    clear: handleClear,
+    save: handleSave,
+    getDataURL: () => signatureURL,
   }));
 
-  const canvasProps = {
-    className: canvasClassName,
-    style: {
-      width,
-      height,
-      backgroundColor,
-      touchAction: 'none', // Prevents default touch actions like scrolling
-      ...props.style
-    },
-    onEnd: () => {
-      setIsEmpty(sigCanvasRef.current?.isEmpty());
-    }
-  };
-
-  const options = {
-    velocityFilterWeight,
-    minWidth,
-    maxWidth,
-    throttle,
-    penColor
-  };
-
   const handleClear = () => {
-    sigCanvasRef.current?.clear();
-    setIsEmpty(true);
+    if (sigCanvas.current) {
+      sigCanvas.current.clear();
+      setIsEmpty(true);
+      setSignatureURL(null);
+    }
   };
 
   const handleSave = () => {
-    if (sigCanvasRef.current?.isEmpty()) {
+    if (!sigCanvas.current) {
+      console.error("Signature canvas reference is not available");
+      return;
+    }
+    
+    if (sigCanvas.current.isEmpty()) {
       alert('Please provide a signature');
       return;
     }
     
-    const signatureDataURL = sigCanvasRef.current?.getTrimmedCanvas().toDataURL();
-    if (onSave && typeof onSave === 'function') {
-      onSave(signatureDataURL);
+    try {
+      // Use toDataURL directly instead of getTrimmedCanvas
+      const dataURL = sigCanvas.current.getCanvas().toDataURL('image/png');
+      console.log('Saving signature data URL:', dataURL.substring(0, 50) + '...');
+      setSignatureURL(dataURL);
+
+      if (onSave) onSave(dataURL);
+    } catch (error) {
+      console.error("Error saving signature:", error);
     }
   };
 
+  const handleEnd = () => {
+    if (sigCanvas.current) {
+      setIsEmpty(sigCanvas.current.isEmpty());
+    }
+  };
+
+  // Optional: Prevent mobile scrolling
+  useEffect(() => {
+    if (!sigCanvas.current) return;
+    
+    const canvas = sigCanvas.current.getCanvas();
+    if (!canvas) return;
+    
+    const preventTouch = (e) => e.preventDefault();
+    canvas.addEventListener('touchstart', preventTouch, { passive: false });
+    canvas.addEventListener('touchmove', preventTouch, { passive: false });
+
+    return () => {
+      canvas.removeEventListener('touchstart', preventTouch);
+      canvas.removeEventListener('touchmove', preventTouch);
+    };
+  }, []);
+
   return (
-    <div className="signature-pad-container">
+    <div>
       <SignatureCanvas
-        ref={sigCanvasRef}
-        penColor={penColor}
-        canvasProps={canvasProps}
-        options={options}
-        {...props}
+        ref={sigCanvas}
+        penColor="black"
+        backgroundColor="white"
+        onEnd={handleEnd}
+        canvasProps={{
+          width: 500,
+          height: 200,
+          className: 'sigCanvas',
+          style: {
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            touchAction: 'none',
+          },
+        }}
       />
-      
-      {showButtons && (
-        <div className={buttonContainerClassName} style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
-          <button 
-            className={buttonClassName} 
-            onClick={handleClear}
-            style={{ padding: '8px 16px', borderRadius: '4px', backgroundColor: '#f0f0f0', border: '1px solid #ccc' }}
-          >
-            Clear
-          </button>
-          <button 
-            className={buttonClassName} 
-            onClick={handleSave}
-            disabled={isEmpty}
-            style={{ 
-              padding: '8px 16px', 
-              borderRadius: '4px', 
-              backgroundColor: isEmpty ? '#cccccc' : '#4a90e2', 
-              color: isEmpty ? '#666666' : 'white',
-              border: '1px solid #ccc'
-            }}
-          >
-            Save Signature
-          </button>
+
+      <div style={{ marginTop: 10 }}>
+        <button onClick={handleClear} style={{ marginRight: 10 }}>
+          Clear
+        </button>
+        <button onClick={handleSave} disabled={isEmpty}>
+          Save
+        </button>
+      </div>
+
+      {signatureURL && (
+        <div style={{ marginTop: 20 }}>
+          <p>Saved Signature:</p>
+          <img
+            src={signatureURL}
+            alt="signature"
+            style={{ maxHeight: '120px' }}
+          />
         </div>
       )}
     </div>

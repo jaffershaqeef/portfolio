@@ -10,7 +10,13 @@ const SpeechToText = () => {
   const [transcript, setTranscript] = useState("");
   const [isListening, setIsListening] = useState(false);
 
-  const signatureRef = useRef(null);
+
+
+  const sigRef = useRef();
+
+  const handleSave = (dataURL) => {
+    console.log('Signature saved:', dataURL);
+  };
 
   // Start speech recognition
   const startListening = () => {
@@ -56,13 +62,10 @@ const SpeechToText = () => {
       <div className="container">
       <h2>Signature Pad</h2>
       
-      <div style={{ height: '200px', border: '1px solid #ccc' }}>
-        <SignaturePad 
-          ref={signatureRef}
-          penColor="blue"
-          backgroundColor="#f5f5f5"
-        />
-      </div>
+      <div style={{ padding: 20 }}>
+      <h2>Signature Pad Demo</h2>
+      <SignaturePad ref={sigRef} onSave={handleSave} />
+    </div>
       
     
     </div>
