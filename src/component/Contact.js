@@ -77,7 +77,7 @@ function Contact() {
             <div className="w-full grid md:py-2 lg:py-4">
               <button
                 className=" relative justify-self-end bg-[#967E76] md:px-16 px-12 py-2 rounded-[7px] text-white hover:bg-[#5c4c46] transition-all duration-500"
-                type="submit" value="Send">
+                type="submit" >
                 Submit
               </button>
             </div>
