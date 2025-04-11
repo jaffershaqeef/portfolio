@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import React from 'react';
 import { ReactTyped } from 'react-typed';
 import { motion } from 'framer-motion'
-import emailjs, { send } from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const form = useRef();
