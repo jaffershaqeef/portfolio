@@ -35,7 +35,7 @@ function Home() {
 
         {/* {mobile view } */}
 
-       <div className='h-[550px] md:h-0 '>
+       <div className='max-h-screen md:h-0 '>
         <div id='about' className={`px-3  md:hidden flex w-full h-[60px] items-center ${isChecked ? 'bg-[#353434]' : 'bg-white'}`}>
             <h1 className=' hover:cursor-pointer w-[90px] font-bold gochi text-[30px] text-[#6fdcbf]'>
               <ReactTyped strings={["Jaffer"]} typeSpeed={500} cursorChar='>' loop /> 

@@ -43,7 +43,7 @@ function Contact() {
               type="text"
               placeholder="Type Your name"
               name="user_name"
-              className="   text-black w-full  md:h-8 pl-3 bg-white rounded-[7px]"
+              className=" text-black w-full  md:h-8 pl-3 bg-white rounded-[7px]"
               required
             />
 
