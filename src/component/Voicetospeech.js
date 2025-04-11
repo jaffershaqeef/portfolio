@@ -53,11 +53,12 @@ const SpeechToText = () => {
       <button onClick={isListening ? stopListening : startListening}>
         {isListening ? "Stop" : "Start"} Listening
       </button>
-
-      <SignatureCanvas
+<div className="bg-black p-3"> 
+  
+<SignatureCanvas
         penColor="blue"
         canvasProps={{
-          className: "signatureCanvas w-full h-full rounded",
+          className: "signatureCanvas w-full h-full rounded border bg-brown-200",
           style: { touchAction: "none" },
         }}
         ref={sigPadRef}
@@ -69,6 +70,7 @@ const SpeechToText = () => {
           penColor: "blue",
         }}
       />
+</div>
     </div>
   );
 };
