@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import SignatureCanvas from "react-signature-canvas";
+import SignaturePad from "./SignatureCanvas";
 
 // Check for SpeechRecognition support
 const SpeechRecognition =
@@ -10,7 +10,7 @@ const SpeechToText = () => {
   const [transcript, setTranscript] = useState("");
   const [isListening, setIsListening] = useState(false);
 
-  const sigPadRef = useRef(null);
+  const signatureRef = useRef(null);
 
   // Start speech recognition
   const startListening = () => {
@@ -53,24 +53,20 @@ const SpeechToText = () => {
       <button onClick={isListening ? stopListening : startListening}>
         {isListening ? "Stop" : "Start"} Listening
       </button>
-<div className="bg-black p-3"> 
-  
-<SignatureCanvas
-        penColor="blue"
-        canvasProps={{
-          className: "signatureCanvas w-full h-full rounded border bg-brown-200",
-          style: { touchAction: "none" },
-        }}
-        ref={sigPadRef}
-        options={{
-          velocityFilterWeight: 0.7,
-          minWidth: 0.5,
-          maxWidth: 2.5,
-          throttle: 16, 
-          penColor: "blue",
-        }}
-      />
-</div>
+      <div className="container">
+      <h2>Signature Pad</h2>
+      
+      <div style={{ height: '200px', border: '1px solid #ccc' }}>
+        <SignaturePad 
+          ref={signatureRef}
+          penColor="blue"
+          backgroundColor="#f5f5f5"
+        />
+      </div>
+      
+    
+    </div>
+
     </div>
   );
 };
